@@ -10,8 +10,13 @@ Default module stack
 - [Go-Mocket](https://github.com/Selvatico/go-mocket) - SQL command mock
 - [Migrate](https://github.com/golang-migrate/migrate) - Database migrations [Installation](https://github.com/golang-migrate/migrate/tree/master/cli)
 - [GoMock](https://github.com/golang/mock) - Golang Mockgen [Installation](https://github.com/golang/mock)
- 
+
+## Env 
+- S3_AKID:
+- S3_SECRET_KEY:
+- Aws_S3_Bucket:
 ## Getting Started
+
 
 ### Prerequisite
 - golang

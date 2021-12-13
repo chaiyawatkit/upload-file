@@ -17,6 +17,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: mypass
       POSTGRES_DB: customers_db
-      S3_AKID: AKIAVEC5NY5KVYBC5RUF
-      S3_SECRET_KEY: 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
-      Aws_S3_Bucket: kuk-develop
+      S3_AKID:
+      S3_SECRET_KEY:
+      Aws_S3_Bucket:
