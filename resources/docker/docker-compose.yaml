@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  upload-file-service:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      target: builder
+    container_name: upload-file
+    command:  "sh -c \"cd app && fresh\" "
+    volumes:
+    - ../..:/go/src/upload-file
+    ports:
+    - "8080:8080"
+    environment:
+      POSTGRES_HOST: postgres-customer-db
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypass
+      POSTGRES_DB: customers_db
+      S3_AKID: AKIAVEC5NY5KVYBC5RUF
+      S3_SECRET_KEY: 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
+      Aws_S3_Bucket: kuk-develop

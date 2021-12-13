@@ -1,0 +1,334 @@
+basePath: /
+definitions:
+  models.CreateRoleRequestJSON:
+    properties:
+      code:
+        example: BOOM
+        type: string
+      displayName:
+        example: BoomDisplay
+        type: string
+    required:
+    - code
+    - displayName
+    type: object
+  models.CreateRoleResponseJSON:
+    properties:
+      code:
+        example: BOOM
+        type: string
+      createAt:
+        example: "2019-02-14T02:35:31.2296459Z"
+        type: string
+      displayName:
+        example: BoomDisplay
+        type: string
+      id:
+        example: 1
+        type: integer
+    type: object
+  models.CreateRoleResponseSwagger:
+    properties:
+      data:
+        $ref: '#/definitions/models.CreateRoleResponseJSON'
+      message:
+        example: OK
+        type: string
+      status:
+        example: success
+        type: string
+    type: object
+  models.CreateUserRequestJSON:
+    properties:
+      address:
+        example: 9999/99 Parkred
+        type: string
+      age:
+        example: "20"
+        type: string
+      birthDate:
+        example: 1999/09/09
+        type: string
+      createdBy:
+        example: N API
+        type: string
+      email:
+        example: tech@mail.co
+        type: string
+      firstName:
+        example: tech@mail.co
+        type: string
+      lastName:
+        example: tech@mail.co
+        type: string
+      password:
+        example: tech@mail.co
+        type: string
+      phoneNumber:
+        example: "+66999999999"
+        type: string
+      provider:
+        example: OWN
+        type: string
+      roleId:
+        example: 1
+        type: integer
+      roleTypeId:
+        example: 1
+        type: integer
+      statusId:
+        example: 1
+        type: integer
+    required:
+    - createdBy
+    - email
+    - firstName
+    - lastName
+    - password
+    - provider
+    - roleId
+    - roleTypeId
+    - statusId
+    type: object
+  models.CreateUserResponse:
+    properties:
+      data:
+        $ref: '#/definitions/models.CreateUserResponseJSON'
+      message:
+        example: OK
+        type: string
+      status:
+        example: success
+        type: string
+    type: object
+  models.CreateUserResponseJSON:
+    properties:
+      address:
+        example: 92/7 Parkred
+        type: string
+      age:
+        example: "20"
+        type: string
+      birthDate:
+        example: 1999/09/09
+        type: string
+      createdBy:
+        example: N API
+        type: string
+      email:
+        example: tech@mail.co.th
+        type: string
+      firstName:
+        example: tech@mail.co
+        type: string
+      lastName:
+        example: tech@mail.co
+        type: string
+      password:
+        example: tech@mail.co
+        type: string
+      phoneNumber:
+        example: "+66999999999"
+        type: string
+      provider:
+        example: OWN
+        type: string
+      roleId:
+        example: 1
+        type: integer
+      roleTypeId:
+        example: 1
+        type: integer
+      statusId:
+        example: 1
+        type: integer
+    required:
+    - createdBy
+    - email
+    - firstName
+    - lastName
+    - password
+    - provider
+    - roleId
+    - roleTypeId
+    - statusId
+    type: object
+  models.FindOneUserDataResponseJSON:
+    properties:
+      address:
+        example: 92/7 Parkred
+        type: string
+      age:
+        example: "20"
+        type: string
+      birthDate:
+        example: 1999/09/09
+        type: string
+      createdBy:
+        example: N API
+        type: string
+      email:
+        example: tech@mail.co.th
+        type: string
+      firstName:
+        example: tech@mail.co
+        type: string
+      lastName:
+        example: tech@mail.co
+        type: string
+      phoneNumber:
+        example: "+66999999999"
+        type: string
+      provider:
+        example: OWN
+        type: string
+      role:
+        $ref: '#/definitions/models.roleResponse'
+      roleTypeId:
+        example: 1
+        type: integer
+      statusId:
+        example: 1
+        type: integer
+    type: object
+  models.roleResponse:
+    properties:
+      code:
+        example: ADMIN
+        type: string
+      displayName:
+        example: Admin
+        type: string
+      id:
+        example: 1
+        type: integer
+    type: object
+  utils.errorResponse:
+    properties:
+      message:
+        example: Error message will be show here
+        type: string
+      status:
+        example: fail
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Trainning Golang MicroService.
+  title: Trainning Golang MicroService
+  version: 0.1.0
+paths:
+  /v1/roles:
+    post:
+      consumes:
+      - application/json
+      description: Create a role
+      operationId: post-roles
+      parameters:
+      - description: for request tracking
+        in: header
+        name: X-Correlation-ID
+        required: true
+        type: string
+      - description: All params related to role
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateRoleRequestJSON'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CreateRoleResponseSwagger'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.errorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.errorResponse'
+      summary: Create Role
+      tags:
+      - roles
+  /v1/users:
+    post:
+      consumes:
+      - application/json
+      description: Create a user
+      operationId: post-users
+      parameters:
+      - description: for request tracking
+        in: header
+        name: X-Correlation-ID
+        required: true
+        type: string
+      - description: All params related to user
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateUserRequestJSON'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CreateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.errorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.errorResponse'
+      summary: Create User
+      tags:
+      - users
+  /v1/users.data:
+    get:
+      consumes:
+      - application/json
+      description: Find One a USERS DATA
+      operationId: post-users-find-one-data
+      parameters:
+      - description: for request tracking
+        in: header
+        name: X-Correlation-ID
+        required: true
+        type: string
+      - description: filter from a id
+        in: query
+        name: id
+        type: string
+      - description: filter from a email
+        in: query
+        name: email
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.FindOneUserDataResponseJSON'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.errorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.errorResponse'
+      summary: Find One USERS DATA
+      tags:
+      - users
+schemes:
+- http
+- https
+swagger: "2.0"
